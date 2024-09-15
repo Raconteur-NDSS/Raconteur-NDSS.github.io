@@ -2717,6 +2717,9 @@
   </div>
 
   <script>
+    document.getElementById('navbar-toggle').addEventListener('click', function() {
+        document.getElementById('navbar-menu').classList.toggle('active');
+    });
     document.addEventListener('DOMContentLoaded', function () {
       const carousel = document.querySelector('.slider-container');
       const carouselItems = document.querySelectorAll('.slider-item');
