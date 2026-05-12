@@ -2267,8 +2267,16 @@
        Global responsive overrides (added last so they win)
        ========================================= -->
   <style>
-    *, *::before, *::after { box-sizing: border-box; }
-    html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+    }
+
+    html {
+      -webkit-text-size-adjust: 100%;
+      scroll-behavior: smooth;
+    }
 
     body {
       width: 100%;
@@ -2286,7 +2294,13 @@
       padding-bottom: clamp(20px, 4vw, 40px);
       text-align: center;
     }
-    #abstract, #motivation, #challenges, #overview, #dataset, #qa {
+
+    #abstract,
+    #motivation,
+    #challenges,
+    #overview,
+    #dataset,
+    #qa {
       scroll-margin-top: clamp(70px, 10vw, 90px);
     }
 
@@ -2299,32 +2313,59 @@
       word-wrap: break-word;
       overflow-wrap: break-word;
     }
-    .header h1 img { width: 1.2em !important; height: 1.2em !important; vertical-align: -0.2em; }
-    .header h1 br { display: none; }
-    @media (min-width: 720px) { .header h1 br { display: inline; } }
+
+    .header h1 img {
+      width: 1.2em !important;
+      height: 1.2em !important;
+      vertical-align: -0.2em;
+    }
+
+    .header h1 br {
+      display: none;
+    }
+
+    @media (min-width: 720px) {
+      .header h1 br {
+        display: inline;
+      }
+    }
 
     .header h3 {
       font-size: clamp(0.95rem, 3vw, 1.9rem);
       line-height: 1.35;
       margin: 0.4em 0;
     }
+
     .header h4 {
       font-size: clamp(0.85rem, 2.4vw, 1.45rem);
       line-height: 1.55;
       margin: 0.3em 0;
     }
+
     .header h5 {
       font-size: clamp(0.72rem, 1.8vw, 1.1rem);
       margin: 0.2em 0 0.8em;
     }
 
     /* Authors table — let it wrap nicely on mobile */
-    .authors { margin: 0 auto; max-width: 100%; }
-    .authors td { padding: 0 clamp(4px, 1.5vw, 16px); }
-    .author-block { display: inline; }
+    .authors {
+      margin: 0 auto;
+      max-width: 100%;
+    }
+
+    .authors td {
+      padding: 0 clamp(4px, 1.5vw, 16px);
+    }
+
+    .author-block {
+      display: inline;
+    }
 
     /* Section headings (Abstract / Dataset Construction etc.) */
-    h2 { font-size: clamp(1.2rem, 4.2vw, 2.8rem); line-height: 1.25; }
+    h2 {
+      font-size: clamp(1.2rem, 4.2vw, 2.8rem);
+      line-height: 1.25;
+    }
 
     /* Body / abstract paragraphs */
     .abstract {
@@ -2334,7 +2375,10 @@
     }
 
     /* Buttons row under title (Paper / Dataset / visitors) */
-    .center-table { width: 100%; }
+    .center-table {
+      width: 100%;
+    }
+
     .center-table .links {
       display: flex;
       flex-wrap: wrap;
@@ -2342,20 +2386,39 @@
       gap: 10px;
       margin-top: clamp(12px, 3vw, 24px) !important;
     }
-    .center-table .links a, .center-table .links .btn {
+
+    .center-table .links a,
+    .center-table .links .btn {
       display: inline-flex;
       align-items: center;
       white-space: nowrap;
     }
 
     /* Navbar tightening on mobile */
-    .navbar-container { padding: 0 clamp(12px, 3vw, 20px); }
-    .navbar-title { font-size: clamp(1.05rem, 3.5vw, 1.5em); }
-    .navbar-logo { width: clamp(24px, 5vw, 32px); height: clamp(24px, 5vw, 32px); }
+    .navbar-container {
+      padding: 0 clamp(12px, 3vw, 20px);
+    }
+
+    .navbar-title {
+      font-size: clamp(1.05rem, 3.5vw, 1.5em);
+    }
+
+    .navbar-logo {
+      width: clamp(24px, 5vw, 32px);
+      height: clamp(24px, 5vw, 32px);
+    }
 
     /* Section content container — keep it readable, never edge-to-edge */
-    body > .header ~ * { max-width: 1100px; margin-left: auto; margin-right: auto; }
-    body > div, body > p { width: 100%; }
+    body>.header~* {
+      max-width: 1100px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    body>div,
+    body>p {
+      width: 100%;
+    }
 
     /* Container "is-max-desktop" (carousel etc.) */
     .container.is-max-desktop {
@@ -2365,20 +2428,44 @@
     }
 
     /* Carousel content — stack vertically on narrow screens */
-    .llm_answers { grid-template-columns: 1fr 1fr; }
-    .llm_question { font-size: clamp(0.95rem, 2.4vw, 1.9rem); }
-    .llm_answer { font-size: clamp(0.85rem, 2vw, 1.55rem); padding: clamp(10px, 2vw, 24px); }
+    .llm_answers {
+      grid-template-columns: 1fr 1fr;
+    }
+
+    .llm_question {
+      font-size: clamp(0.95rem, 2.4vw, 1.9rem);
+    }
+
+    .llm_answer {
+      font-size: clamp(0.85rem, 2vw, 1.55rem);
+      padding: clamp(10px, 2vw, 24px);
+    }
+
     @media (max-width: 720px) {
-      .llm_answers { grid-template-columns: 1fr; }
-      .llm_answer { border-right: none !important; border-bottom: 2px solid #e5e5e5; }
-      .llm_answer:last-child { border-bottom: none; }
+      .llm_answers {
+        grid-template-columns: 1fr;
+      }
+
+      .llm_answer {
+        border-right: none !important;
+        border-bottom: 2px solid #e5e5e5;
+      }
+
+      .llm_answer:last-child {
+        border-bottom: none;
+      }
     }
 
     /* Images should never overflow */
-    img, svg { max-width: 100%; height: auto; }
+    img,
+    svg {
+      max-width: 100%;
+      height: auto;
+    }
 
     /* Code blocks: don't blow out width */
-    code, pre {
+    code,
+    pre {
       max-width: 100%;
       overflow-x: auto;
       word-break: break-word;
@@ -2387,9 +2474,17 @@
 
     /* Small-screen specific */
     @media (max-width: 520px) {
-      .header { padding-top: 88px; }
-      .navbar-menu a { padding: 12px 14px; font-size: 0.95rem; }
-      .center-table .links a, .center-table .links .btn {
+      .header {
+        padding-top: 88px;
+      }
+
+      .navbar-menu a {
+        padding: 12px 14px;
+        font-size: 0.95rem;
+      }
+
+      .center-table .links a,
+      .center-table .links .btn {
         padding: 8px 14px;
         font-size: 0.9rem;
       }
@@ -3151,10 +3246,18 @@
     }
 
     @media (max-width: 520px) {
-      .rac-email-box { flex-direction: row; }
-      .rac-actions { flex-direction: column-reverse; }
+      .rac-email-box {
+        flex-direction: row;
+      }
+
+      .rac-actions {
+        flex-direction: column-reverse;
+      }
+
       .rac-actions .rac-btn-primary,
-      .rac-actions .rac-btn-secondary { width: 100%; }
+      .rac-actions .rac-btn-secondary {
+        width: 100%;
+      }
     }
   </style>
 
